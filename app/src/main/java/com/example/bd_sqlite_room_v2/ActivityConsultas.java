@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import bd.EscuelaBD;
 import entidades.Alumno;
 
@@ -21,9 +23,7 @@ public class ActivityConsultas extends Activity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-
-    ArrayList<Alumno> datos;
-
+    EscuelaBD bd;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,29 +38,22 @@ public class ActivityConsultas extends Activity {
 
         //Obtener datos desde la base de datos local en SQLite
         // EscuelaBD bd = EscuelaBD.getAppDatabase(getBaseContext());
-        EscuelaBD bd = EscuelaBD.getAppDatabase(getBaseContext());
+        bd = EscuelaBD.getAppDatabase(getApplicationContext());
+        cargarDatos();
+    }
+    private void cargarDatos() {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                List<Alumno> alumnos = bd.alumnoDAO().obtenerTodos();
 
-                datos = (ArrayList<Alumno>) bd.alumnoDAO().obtenerTodos();
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        ArrayList<Alumno> datos2 = new ArrayList<>();
-                        datos2.add(new Alumno("1","1","1",
-                                "1", (byte)1,(byte)1, "1"));
-                        datos2.add(new Alumno("2","2","2",
-                                "2", (byte)2,(byte)2, "2"));
-
-                        adapter = new CustomAdapter(datos);
+                        adapter = new CustomAdapter((ArrayList<Alumno>) alumnos);
                         recyclerView.setAdapter(adapter);
-
-                        //ArrayAdapter adaptador = new ArrayAdapter(getBaseContext(), android.R.layout.simple_list_item_1, listaAlumnos);
-                        //listviewAlumnos.setAdapter(adaptador);
                     }
                 });
-
             }
         }).start();
     }

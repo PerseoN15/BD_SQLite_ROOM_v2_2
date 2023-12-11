@@ -16,7 +16,7 @@ import entidades.Alumno;
 public class ActivityAltas extends Activity {
 
     EditText cajaNumControl, cajaNombre;
-
+    EscuelaBD bd;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,32 +24,34 @@ public class ActivityAltas extends Activity {
 
         cajaNumControl = findViewById(R.id.caja_num_control);
         cajaNombre =findViewById(R.id.caja_nombre);
+        bd = EscuelaBD.getAppDatabase(getApplicationContext());
     }
 
     public void agregarAlumno(View v){
-        Log.i("MSJ->", "metodo agregar");
-
-        EscuelaBD bd = EscuelaBD.getAppDatabase(getBaseContext());
-
+        String numControl = cajaNumControl.getText().toString();
+        String nombre = cajaNombre.getText().toString();
         new Thread(new Runnable() {
             @Override
             public void run() {
-                Log.i("MSJ->", "CORRECTO");
-                bd.alumnoDAO().agregarAlumno(
-                        new Alumno(cajaNumControl.getText().toString(), "1", "1", "1", (byte)1, (byte)1, "1"));
+                // Verificar que los campos no estén vacíos
+                if (!numControl.isEmpty() && !nombre.isEmpty()) {
+                    // Agregar el alumno a la base de datos
+                    Alumno alumno = new Alumno(numControl, nombre,primerAp,segundoAp,edad,semestre,carrera);
+                    bd.alumnoDAO().agregarAlumno(alumno);
 
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        Toast.makeText(getApplicationContext(),
-                                "REGISTRO AGREGADO CORRECTAMENTE",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                });
+                    Toast.makeText(getApplicationContext(),
+                            "Alumno agregado correctamente",
+                            Toast.LENGTH_SHORT).show();
+
+                    // Limpiar los campos después de agregar
+                    cajaNumControl.setText("");
+                    cajaNombre.setText("");
+                } else {
+                    Toast.makeText(getApplicationContext(),
+                            "Completa todos los campos",
+                            Toast.LENGTH_SHORT).show();
+
             }
         }).start();
-
-
-
     }
 }

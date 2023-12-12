@@ -1,5 +1,6 @@
 package com.example.bd_sqlite_room_v2;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -9,7 +10,7 @@ import androidx.annotation.Nullable;
 
 import bd.EscuelaBD;
 
-public class ActivityBajas {
+public class ActivityBajas extends Activity {
     EditText cajaNumControl;
     EscuelaBD bd;
 
@@ -29,7 +30,12 @@ public class ActivityBajas {
         // Verificar que el campo no esté vacío
         if (!numControl.isEmpty()) {
             // Eliminar el alumno de la base de datos por número de control
-            bd.alumnoDAO().eliminarAlumnoPorNumControl(numControl);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    bd.alumnoDAO().eliminarAlumnoPorNumControl(numControl);
+                }
+            }).start();
 
             Toast.makeText(getApplicationContext(),
                     "Alumno eliminado correctamente",

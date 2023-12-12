@@ -22,21 +22,17 @@ public class ActivityMenu extends Activity {
         Intent i = new Intent(this, ActivityAltas.class);
         startActivity(i);
 
-        /*Intent i;
-        switch (v.getId()){
-            case R.id.btn_altas: i = new Intent(this, ActivityAltas.class);
-                                     startActivity(i);
-                                     break;
-            case R.id.btn_bajas: i = new Intent(this, ActivityBajas.class);
-                                    startActivity(i);
-                                    break;
-
-        } */
     }
-
+    public void abrirActivityBajas(View view) {
+        Intent i = new Intent(this, ActivityBajas.class);
+        startActivity(i);
+    }
     public void abrirConsultas(View v){
         Intent i = new Intent(this, ActivityConsultas.class);
         startActivity(i);
     }
-
+    public void abrirActivityCambios(View view) {
+        Intent i = new Intent(this, ActivityCambios.class);
+        startActivity(i);
+    }
 }

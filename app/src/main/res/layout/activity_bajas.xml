@@ -12,17 +12,20 @@
         android:hint="Ingrese número de control"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
     <Button
         android:id="@+id/btn_eliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/caja_num_control_bajas"
+        android:layout_below="@id/recyclerView"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="173dp"
         android:layout_marginEnd="183dp"
         android:onClick="eliminarAlumno"
         android:text="Eliminar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/caja_num_control_bajas" />
+        app:layout_constraintTop_toBottomOf="@+id/recyclerView" />
 </androidx.constraintlayout.widget.ConstraintLayout>

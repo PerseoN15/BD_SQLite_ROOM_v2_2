@@ -31,7 +31,7 @@
     <EditText
         android:id="@+id/caja_primer_apellido"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="12dp"
         android:hint="Primer Apellido"
         android:inputType="text"
@@ -44,8 +44,8 @@
     <EditText
         android:id="@+id/caja_segundo_apellido"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="45dp"
         android:hint="Segundo Apellido"
         android:inputType="text"
         app:layout_constraintTop_toBottomOf="@id/caja_primer_apellido"
@@ -58,7 +58,7 @@
     <EditText
         android:id="@+id/caja_edad"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:hint="Edad"
         android:inputType="number"
         app:layout_constraintTop_toBottomOf="@id/caja_segundo_apellido"
@@ -72,7 +72,7 @@
     <EditText
         android:id="@+id/caja_semestre"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="45dp"
         android:ems="10"
         android:hint="Semestre"
@@ -83,7 +83,7 @@
     <EditText
         android:id="@+id/caja_carrera"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:layout_marginTop="45dp"
         android:ems="10"
         android:hint="Carrera"
@@ -131,6 +131,6 @@
         android:onClick="agregarAlumno"
         android:text="GUARDAR"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/caja_nombre" />
+        app:layout_constraintTop_toBottomOf="@+id/caja_carrera" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

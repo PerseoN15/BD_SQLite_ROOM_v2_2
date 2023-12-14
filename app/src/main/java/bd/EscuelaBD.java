@@ -14,14 +14,17 @@ public abstract class EscuelaBD extends RoomDatabase {
     public abstract AlumnoDAO alumnoDAO();
 
     private static EscuelaBD INSTANCE;
-    public static EscuelaBD getAppDatabase(Context context){
-        if(INSTANCE == null)
-            INSTANCE = Room.databaseBuilder(context.getApplicationContext(), EscuelaBD.class, "escuela").build();
+
+    public static synchronized EscuelaBD getAppDatabase(Context context) {
+        if (INSTANCE == null) {
+            INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
+                            EscuelaBD.class, "escuela")
+                    .build();
+        }
         return INSTANCE;
     }
 
-    public static void destroyInstance(){
+    public static void destroyInstance() {
         INSTANCE = null;
     }
-
 }

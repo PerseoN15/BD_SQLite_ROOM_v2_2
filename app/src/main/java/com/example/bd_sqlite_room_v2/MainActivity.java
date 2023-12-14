@@ -27,17 +27,20 @@ public class MainActivity extends AppCompatActivity {
     //metodo enlazado al EVENTO CLIC DEL BOTON ACCEDER
 
     public void abrirMenu(View v){
-        Toast.makeText(getApplicationContext(),
-                "MAGIA",
-                Toast.LENGTH_LONG).show();
+        String usuario = cajaUsuario.getText().toString();
+        String contraseña = cajaContraseña.getText().toString();
 
-        //sacar usuario y contraseña de BD
-        //verificar si existe en BD
-        //en caso correcto, abrir MENU
+        if (verificarCredenciales(usuario, contraseña)) {
+            Toast.makeText(getApplicationContext(), "Credenciales correctas", Toast.LENGTH_LONG).show();
+            Intent i = new Intent(this, ActivityMenu.class);
+            startActivity(i);
+        } else {
+            Toast.makeText(getApplicationContext(), "Credenciales incorrectas", Toast.LENGTH_LONG).show();
+        }
+    }
 
-        Intent i = new Intent(this, ActivityMenu.class);
-        startActivity(i);
-
+    private boolean verificarCredenciales(String usuario, String contraseña) {
+        return usuario.equals("usuario") && contraseña.equals("contraseña");
     }
 
 }//class

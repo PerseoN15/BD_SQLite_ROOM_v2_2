@@ -33,9 +33,9 @@ public interface AlumnoDAO {
     public void modificarAlumnoPorNumControl(String n, String pa, String nc); //borrar SQL
 
     //-------------------- CONSULTAS -------------------------
-    @Query("SELECT * from Alumno")
+    @Query("SELECT * from alumno")
     public List<Alumno> obtenerTodos();
 
-    @Query("SELECT * FROM Alumno WHERE Nombre LIKE :n")
+    @Query("SELECT * FROM alumno WHERE Nombre LIKE :n")
     public Alumno buscarPorNombre(String n);
 }

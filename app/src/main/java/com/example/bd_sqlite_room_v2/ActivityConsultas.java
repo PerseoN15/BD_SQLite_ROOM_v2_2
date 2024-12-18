@@ -67,24 +67,33 @@ class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
         private final TextView textViewNumControl;
         private final TextView textViewNombre;
         private final TextView textViewEdad;
+
+        /*private final TextView textViewCarrera;
+        private final TextView textViewSemestre;*/
         public ViewHolder(View view) {
             super(view);
-            textViewNumControl = view.findViewById(R.id.textViewNumControl);
-            textViewNombre = view.findViewById(R.id.textViewNombre);
-            textViewEdad = view.findViewById(R.id.textViewEdad);
+                textViewNumControl = view.findViewById(R.id.textViewNumControl);
+                textViewNombre = view.findViewById(R.id.textViewNombre);
+                textViewEdad = view.findViewById(R.id.textViewEdad);
+                /*textViewCarrera = view.findViewById(R.id.textViewCarrera);
+                textViewSemestre = view.findViewById(R.id.textViewSemestre);*/
              }
 
         public TextView getTextViewNumControl() {
             return textViewNumControl;
         }
-
         public TextView getTextViewNombre() {
             return textViewNombre;
         }
-
         public TextView getTextViewEdad() {
             return textViewEdad;
         }
+        /*public TextView getTextViewCarrera() {
+            return textViewCarrera;
+        }
+        public TextView getTextViewSemestre() {
+            return textViewSemestre;
+        }*/
     }
 
     public CustomAdapter(ArrayList<Alumno> dataSet) {
@@ -105,6 +114,9 @@ class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
         viewHolder.getTextViewNumControl().setText(alumno.getNumControl());
         viewHolder.getTextViewNombre().setText(alumno.getNombre());
         viewHolder.getTextViewEdad().setText(String.valueOf(alumno.getEdad()));
+        /*viewHolder.getTextViewCarrera().setText(alumno.getCarrera());
+        viewHolder.getTextViewSemestre().setText(String.valueOf(alumno.getSemestre()));*/
+
     }
 
     @Override

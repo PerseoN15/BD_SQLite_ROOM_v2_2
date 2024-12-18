@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private boolean verificarCredenciales(String usuario, String contraseña) {
-        return usuario.equals("usuario") && contraseña.equals("contraseña");
+        return usuario.equals("1") && contraseña.equals("1");
     }
 
 }//class

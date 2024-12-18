@@ -2,8 +2,8 @@
     <string name="app_name">BD_SQLite_ROOM_v2</string>
 
 
-    <string name="txt_usuario">USUARIO: </string>
-    <string name="txt_contraseña">CONRASEÑA: </string>
+    <string name="txt_usuario">USUARIO: (USAR "1")</string>
+    <string name="txt_contraseña">CONRASEÑA: (USAR "1")</string>
     <string name="btn_acceder">ACCEDER</string>
 
     <string name="btn_altas"> AGREGAR </string>
